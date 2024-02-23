@@ -3,19 +3,23 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Bầu Cua</title>
-    <link rel="stylesheet" type="text/css" href="styles.css">
+    <title>sgu lắc bầu cua</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
 </head>
-<body>
-    <div class="container">
-        <h1>Bầu Cua</h1>
-        <div id="result">
-            <div class="dice" id="dice1"></div>
-            <div class="dice" id="dice2"></div>
-            <div class="dice" id="dice3"></div>
+<body class="bg-gray-200">
+    <div class="container mx-auto py-12">
+        <div id="result" class="flex justify-center mb-8"></div>
+        <div class="grid grid-cols-3 gap-2 mb-8">
+            <div class="choice bg-gray-200 text-center py-4 rounded-lg cursor-pointer flex justify-center items-center hover:bg-gray-300 transition duration-300" data-choice="nai" onclick="setSelectedChoice('nai')"><img src="./img/nai.png" alt="Nai"></div>
+            <div class="choice bg-gray-200 text-center py-4 rounded-lg cursor-pointer flex justify-center items-center hover:bg-gray-300 transition duration-300" data-choice="bầu" onclick="setSelectedChoice('bầu')"><img src="./img/bau.png" alt="Bầu"></div>
+            <div class="choice bg-gray-200 text-center py-4 rounded-lg cursor-pointer flex justify-center items-center hover:bg-gray-300 transition duration-300" data-choice="gà" onclick="setSelectedChoice('gà')"><img src="./img/ga.png" alt="Gà"></div>
+            <div class="choice bg-gray-200 text-center py-4 rounded-lg cursor-pointer flex justify-center items-center hover:bg-gray-300 transition duration-300" data-choice="cá" onclick="setSelectedChoice('cá')"><img src="./img/ca.png" alt="Cá"></div>
+            <div class="choice bg-gray-200 text-center py-4 rounded-lg cursor-pointer flex justify-center items-center hover:bg-gray-300 transition duration-300" data-choice="cua" onclick="setSelectedChoice('cua')"><img src="./img/cua.png" alt="Cua"></div>
+            <div class="choice bg-gray-200 text-center py-4 rounded-lg cursor-pointer flex justify-center items-center hover:bg-gray-300 transition duration-300" data-choice="tôm" onclick="setSelectedChoice('tôm')"><img src="./img/tom.png" alt="Tôm"></div>
         </div>
-        <div class="choices">
-            <button onclick="play()">Lắc</button>
+        <div id="gameResult" class="text-xl font-bold text-center"></div>
+        <div class="choices mt-8 flex justify-center">
+            <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded mr-4 transition duration-300" onclick="play()">Lắc</button>
         </div>
     </div>
     <script src="script.js"></script>
