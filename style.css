@@ -1,8 +1,0 @@
-.choice:hover,
-.choice.selected {
-    background-color: #ddd;
-}
-
-.choice.selected:hover {
-    background-color: #ccc;
-}

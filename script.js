@@ -1,4 +1,12 @@
 const choices = ["bầu", "cua", "tôm", "cá", "gà", "nai"];
+const imagePaths = {
+    "bầu": "./img/bau.png",
+    "cua": "./img/cua.png",
+    "tôm": "./img/tom.png",
+    "cá": "./img/ca.png",
+    "gà": "./img/ga.png",
+    "nai": "./img/nai.png"
+};
 let selectedChoices = [];
 
 function setSelectedChoice(choice) {
@@ -35,53 +43,55 @@ function play() {
         return;
     }
 
+    // Clear previous result displayed on the main page
     const resultDiv = document.getElementById("result");
     resultDiv.innerHTML = "";
-    let winningCount = 0;
-    let diceResults = "";
 
+    // Generate new result and display in popup
+    const popup = document.createElement("div");
+    popup.classList.add("fixed", "top-0", "left-0", "w-full", "h-full", "flex", "justify-center", "items-center", "bg-black", "bg-opacity-50", "popup");
+    const popupContent = document.createElement("div");
+    popupContent.classList.add("bg-white", "rounded-lg", "p-8");
+    const title = document.createElement("h2");
+    title.classList.add("text-xl", "font-bold", "mb-4");
+    const resultContainer = document.createElement("div");
+    resultContainer.classList.add("flex", "items-center", "justify-center", "space-x-2", "mt-2");
+    
     for (let i = 0; i < 3; i++) {
         const randomIndex = Math.floor(Math.random() * choices.length);
         const result = choices[randomIndex];
-        const diceDiv = document.createElement("div");
-        diceDiv.classList.add("dice");
-        diceDiv.textContent = result;
-        resultDiv.appendChild(diceDiv);
-
-        if (selectedChoices.includes(result)) {
-            winningCount++;
-        }
-
-        diceResults += result + " ";
+        const diceImg = document.createElement("img");
+        diceImg.classList.add("dice-image");
+        diceImg.src = imagePaths[result];
+        resultContainer.appendChild(diceImg);
     }
 
-    const popup = document.createElement("div");
-    popup.classList.add("fixed", "top-0", "left-0", "w-full", "h-full", "flex", "justify-center", "items-center", "bg-black", "bg-opacity-50", "popup");
-    popup.innerHTML = `
-        <div class="bg-white rounded-lg p-8">
-            <p>${diceResults}</p>
-            <button onclick="closePopupAndReset()" class="mt-4 bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">Đóng</button>
-        </div>
-    `;
+    const closeButton = document.createElement("button");
+    closeButton.textContent = "Đóng";
+    closeButton.classList.add("mt-4", "bg-blue-500", "hover:bg-blue-700", "text-white", "font-bold", "py-2", "px-4", "rounded");
+    closeButton.onclick = closePopup;
+
+    popupContent.appendChild(title);
+    popupContent.appendChild(resultContainer);
+    popupContent.appendChild(closeButton);
+    popup.appendChild(popupContent);
 
     document.body.appendChild(popup);
 }
 
-function closePopupAndReset() {
-    reset(); // Reset trò chơi khi đóng cửa sổ popup
-    closePopup();
-}
 
 function closePopup() {
     const popup = document.querySelector(".popup");
     if (popup) {
         popup.remove();
+        // Reset selected choices array
+        selectedChoices = [];
+        // Clear previous results
+        const resultDiv = document.getElementById("result");
+        resultDiv.innerHTML = ""; // Clear the content
+        // Update UI to reflect the reset
+        updateSelectedChoicesUI();
     }
 }
 
-function reset() {
-    selectedChoices = [];
-    updateSelectedChoicesUI();
-    document.getElementById("gameResult").textContent = "";
-    document.getElementById("result").innerHTML = "";
-}
+
