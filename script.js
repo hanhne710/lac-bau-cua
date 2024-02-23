@@ -1,11 +1,11 @@
-const choices = ["bầu", "cua", "tôm", "cá", "gà", "nai"];
+const choices = ["đông", "ka", "tiên", "bảo", "hạnh", "thắm"];
 const imagePaths = {
-    "bầu": "./img/bau.png",
-    "cua": "./img/cua.png",
-    "tôm": "./img/tom.png",
-    "cá": "./img/ca.png",
-    "gà": "./img/ga.png",
-    "nai": "./img/nai.png"
+    "đông": "./img/dong.png",
+    "ka": "./img/ka.png",
+    "tiên": "./img/tien.png",
+    "bảo": "./img/bao.png",
+    "hạnh": "./img/hanh.png",
+    "thắm": "./img/tien-nu-sgu.png"
 };
 let selectedChoices = [];
 
