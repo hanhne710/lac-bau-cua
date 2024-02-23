@@ -9,6 +9,7 @@
 <body class="bg-gray-200">
     <div class="max-w-xl container mx-auto py-12">
         <div id="result" class="flex justify-center mb-8"></div>
+        <h1 style="font-weight: bold;">KHÔNG ĐẶT TRÙNG</h1>
         <div class="grid grid-cols-3 gap-2">
             <div class="choice bg-gray-200 text-center py-4 rounded-lg cursor-pointer flex justify-center items-center hover:bg-gray-300 transition duration-300" data-choice="thắm" onclick="setSelectedChoice('thắm')"><img src="./img/tien-nu-sgu.png" alt="Thắm"></div>
             <div class="choice bg-gray-200 text-center py-4 rounded-lg cursor-pointer flex justify-center items-center hover:bg-gray-300 transition duration-300" data-choice="đông" onclick="setSelectedChoice('đông')"><img src="./img/dong.png" alt="Đông"></div>
@@ -21,6 +22,11 @@
         <div class="choices mt-8 flex justify-center">
             <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded mr-4 transition duration-300" onclick="play()">Lắc</button>
         </div>
+        <div class="player-names mt-8 flex justify-center">
+            <input type="text" id="player1" class="mr-2 border border-gray-300 px-2 py-1 rounded" placeholder="Người chơi 1">
+            <input type="text" id="player2" class="mr-2 border border-gray-300 px-2 py-1 rounded" placeholder="Người chơi 2">
+            <input type="text" id="player3" class="border border-gray-300 px-2 py-1 rounded" placeholder="Người chơi 3">
+        </div>        
     </div>
     <script src="script.js"></script>
 </body>
